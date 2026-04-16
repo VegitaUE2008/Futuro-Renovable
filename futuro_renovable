@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Concientización sobre energías renovables y desarrollo sostenible en México." />
+  <title>Futuro Estable, Futuro Renovable</title>
+
+  <!-- Fuentes: Playfair Display para títulos + DM Sans para cuerpo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════
+       VARIABLES & RESET
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde-bosque:  #0d6e4a;
+      --verde-claro:   #38ef7d;
+      --verde-medio:   #11998e;
+      --sol:           #f5c518;
+      --cielo:         #e0f7fa;
+      --blanco:        #ffffff;
+      --texto:         #2d3a2e;
+      --texto-suave:   #4a5e4c;
+      --sombra:        0 8px 32px rgba(13,110,74,.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cielo);
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    /* ═══════════════════════════════════════════
+       MARQUESINA / TICKER (controlada por JS)
+    ═══════════════════════════════════════════ */
+    .ticker-wrap {
+      width: 100%;
+      background: linear-gradient(90deg, var(--verde-bosque) 0%, var(--verde-medio) 50%, var(--verde-bosque) 100%);
+      padding: 0.55rem 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 1001;
+    }
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    .ticker-item {
+      padding: 0 2.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      color: var(--blanco);
+      flex-shrink: 0;
+    }
+    .ticker-item span { color: var(--sol); margin-right: 0.4rem; }
+
+    /* ═══════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════ */
+    header {
+      position: relative;
+      background: linear-gradient(135deg, #0d6e4a 0%, #11998e 55%, #38ef7d 100%);
+      color: var(--blanco);
+      padding: 5rem 1rem 4rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Decoración: sol y hojas SVG incrustados */
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(245,197,24,.25) 30%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,.08) 30%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .header-icon {
+      font-size: 3.5rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      animation: flotar 4s ease-in-out infinite;
+      line-height: 1;
+    }
+    @keyframes flotar {
+      0%,100% { transform: translateY(0);   }
+      50%      { transform: translateY(-8px); }
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      text-shadow: 2px 3px 8px rgba(0,0,0,.22);
+      position: relative;
+      z-index: 1;
+    }
+    .header-sub {
+      margin-top: 0.7rem;
+      font-size: 1.05rem;
+      opacity: 0.88;
+      font-weight: 300;
+    }
+
+    /* Olas decorativas al pie del header */
+    .wave-divider {
+      display: block;
+      width: 100%;
+      line-height: 0;
+      overflow: hidden;
+    }
+    .wave-divider svg { display: block; width: 100%; height: 60px; }
+
+    /* ═══════════════════════════════════════════
+       NAVEGACIÓN STICKY
+    ═══════════════════════════════════════════ */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 0.85rem 1rem;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 16px rgba(13,110,74,.12);
+      z-index: 1000;
+    }
+    nav a {
+      color: var(--verde-bosque);
+      text-decoration: none;
+      padding: 0.45rem 1.2rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 25px;
+      border: 2px solid transparent;
+      transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.2s;
+    }
+    nav a:hover, nav a:focus {
+      background: var(--verde-bosque);
+      color: var(--blanco);
+      border-color: var(--verde-claro);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECCIONES
+    ═══════════════════════════════════════════ */
+    section {
+      max-width: 820px;
+      margin: 3.5rem auto;
+      padding: 3rem 2.5rem;
+      background: var(--blanco);
+      border-radius: 20px;
+      box-shadow: var(--sombra);
+      position: relative;
+      overflow: hidden;
+      animation: aparecer 0.9s ease both;
+    }
+
+    /* Acento verde lateral */
+    section::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 5px;
+      background: linear-gradient(180deg, var(--verde-medio), var(--verde-claro));
+      border-radius: 20px 0 0 20px;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--verde-bosque);
+      font-size: 1.85rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h2 .icono { font-size: 1.5rem; }
+
+    p {
+      line-height: 1.85;
+      font-size: 1.05rem;
+      color: var(--texto-suave);
+      margin-bottom: 1rem;
+    }
+    p:last-of-type { margin-bottom: 0; }
+
+    /* ═══════════════════════════════════════════
+       IMÁGENES
+    ═══════════════════════════════════════════ */
+    .img-seccion {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      margin: 1.6rem 0 0;
+      box-shadow: 0 6px 20px rgba(13,110,74,.13);
+      object-fit: cover;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .img-seccion:hover {
+      transform: scale(1.015);
+      box-shadow: 0 12px 30px rgba(13,110,74,.2);
+    }
+
+    /* ═══════════════════════════════════════════
+       TARJETAS DE DATOS (ODS)
+    ═══════════════════════════════════════════ */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.6rem;
+    }
+    .card-dato {
+      background: linear-gradient(135deg, #e8f8f1 0%, #f0fdf4 100%);
+      border: 1.5px solid #b6edd1;
+      border-radius: 14px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .card-dato:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(13,110,74,.14);
+    }
+    .card-dato .numero {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--verde-medio);
+    }
+    .card-dato .etiqueta {
+      font-size: 0.82rem;
+      color: var(--texto-suave);
+      margin-top: 0.3rem;
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════
+       EQUIPO (quiénes somos)
+    ═══════════════════════════════════════════ */
+    .equipo-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.4rem;
+    }
+    .chip {
+      background: linear-gradient(90deg, var(--verde-medio), var(--verde-claro));
+      color: var(--blanco);
+      border-radius: 20px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════
+       BOTÓN INSTAGRAM
+    ═══════════════════════════════════════════ */
+    .btn-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      color: var(--blanco);
+      padding: 0.75rem 1.8rem;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-top: 1.4rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-instagram:hover, .btn-instagram:focus {
+      transform: scale(1.06);
+      box-shadow: 0 6px 20px rgba(220,39,67,.4);
+      outline: none;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: #6b7c6d;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    .bandera-mx {
+      width: 56px;
+      height: 8px;
+      background: linear-gradient(90deg, #006341 33.3%, #fff 33.3%, #fff 66.6%, #c8102e 66.6%);
+      margin: 0.6rem auto 0;
+      border-radius: 4px;
+      border: 1px solid #dde;
+    }
+
+    /* Decoración flotante de hojas/naturaleza de fondo */
+    .deco-hoja {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0.06;
+      z-index: 0;
+      font-size: 7rem;
+      user-select: none;
+    }
+    .deco-hoja.h1 { top: 10%; left: -2%; animation: girar 18s linear infinite; }
+    .deco-hoja.h2 { top: 55%; right: -2%; animation: girar 22s linear infinite reverse; }
+    .deco-hoja.h3 { bottom: 8%; left: 10%; animation: girar 15s linear infinite; font-size: 5rem; }
+    @keyframes girar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      header { padding: 3.5rem 1rem 3rem; }
+      section { margin: 1.5rem 1rem; padding: 2rem 1.4rem; }
+      h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hojas decorativas de fondo (puro CSS + emoji) -->
+  <div class="deco-hoja h1" aria-hidden="true">🌿</div>
+  <div class="deco-hoja h2" aria-hidden="true">☀️</div>
+  <div class="deco-hoja h3" aria-hidden="true">🍃</div>
+
+  <!-- ── MARQUESINA (contenido generado por JS) ── -->
+  <div class="ticker-wrap" role="marquee" aria-label="Bienvenida">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
+  <!-- ── HEADER ─────────────────────────────── -->
+  <header>
+    <span class="header-icon" aria-hidden="true">🌱</span>
+    <h1>Futuro Estable,<br>Futuro Renovable</h1>
+    <p class="header-sub">Educación · Energía Limpia · Desarrollo Sostenible</p>
+  </header>
+
+  <!-- Ola decorativa -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#e0f7fa"/>
+    </svg>
+  </div>
+
+  <!-- ── NAVEGACIÓN ─────────────────────────── -->
+  <nav aria-label="Menú principal">
+    <a href="#inicio">🏠 Inicio</a>
+    <a href="#ods">☀️ ODS 7</a>
+    <a href="#quienes-somos">👥 Quiénes Somos</a>
+    <a href="#descubre-mas">🔗 Descubre Más</a>
+  </nav>
+
+  <!-- ── SECCIÓN: INICIO ────────────────────── -->
+  <section id="inicio">
+    <h2><span class="icono" aria-hidden="true">🌿</span> Inicio</h2>
+    <p>
+      Bienvenidos a <strong>Futuro Estable, Futuro Renovable</strong>. Nuestra misión es
+      concientizar sobre la importancia de una transición urgente hacia energías limpias,
+      para asegurar un mañana próspero, saludable y sostenible para todos.
+    </p>
+    <p>
+      Cada kilowatt generado por el sol o el viento es un paso hacia un México libre
+      de contaminación y dependiente de sus propios recursos naturales.
+    </p>
+    <img
+      src="https://mexico.unir.net/wp-content/uploads/sites/6/2025/11/Energia-eolica-el-viento-como-generador-de-electricidad.jpg"
+      alt="Turbinas de energía eólica en campo abierto"
+      class="img-seccion"
+      loading="lazy"
+      width="800"
+    />
+  </section>
+
+  <!-- ── SECCIÓN: ODS 7 ─────────────────────── -->
+  <section id="ods">
+    <h2><span class="icono" aria-hidden="true">☀️</span> ODS 7: El Reto en México</h2>
+    <p>
+      México posee un potencial enorme para generar energía solar y eólica. Bajo los
+      lineamientos de la <strong>Agenda 2030</strong>, el país busca que el
+      <strong>35 % de su energía</strong> provenga de fuentes limpias.
+    </p>
+    <p>
+      El aprovechamiento de recursos renovables es clave para llevar electricidad a
+      comunidades aisladas, reducir la dependencia de hidrocarburos y mejorar la
+      calidad del aire en nuestras ciudades.
+    </p>
+
+    <!-- Tarjetas de datos -->
+    <div class="cards-grid">
+      <div class="card-dato">
+        <div class="numero">35 %</div>
+        <div class="etiqueta">Meta de energía limpia 2030</div>
+      </div>
+      <div class="card-dato">
+        <div class="numero">☀️ #1</div>
+        <div class="etiqueta">Potencial solar en América Latina</div>
+      </div>
+      <div class="card-dato">
+        <div class="numero">+50 GW</div>
+        <div class="etiqueta">Capacidad renovable instalable estimada</div>
+      </div>
+    </div>
+
+    <img
+      src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80"
+      alt="Parque de energía eólica al atardecer"
+      class="img-seccion"
+      loading="lazy"
+      width="800"
+    />
+  </section>
+
+  <!-- ── SECCIÓN: QUIÉNES SOMOS ─────────────── -->
+  <section id="quienes-somos">
+    <h2><span class="icono" aria-hidden="true">🌍</span> Quiénes Somos</h2>
+    <p>
+      Somos un equipo de estudiantes comprometidos con la difusión de información
+      científica y social sobre el desarrollo sostenible. Creemos que la
+      <strong>educación</strong> es el primer paso para lograr un cambio real en
+      nuestra huella de carbono.
+    </p>
+    <p>
+      Trabajamos con pasión por un México más verde, más justo y energéticamente
+      independiente.
+    </p>
+    <div class="equipo-chips" aria-label="Áreas de enfoque">
+      <span class="chip">🌱 Educación ambiental</span>
+      <span class="chip">⚡ Energía solar</span>
+      <span class="chip">💨 Energía eólica</span>
+      <span class="chip">♻️ Economía circular</span>
+      <span class="chip">🔬 Investigación</span>
+    </div>
+  </section>
+
+  <!-- ── SECCIÓN: DESCUBRE MÁS ─────────────── -->
+  <section id="descubre-mas">
+    <h2><span class="icono" aria-hidden="true">🔗</span> Descubre Más</h2>
+    <p>
+      ¿Quieres seguir aprendiendo sobre cómo ayudar al planeta? ¡Síguenos en
+      Instagram y entérate de nuestras últimas actualizaciones sobre energía
+      renovable en México!
+    </p>
+    <a
+      href="https://www.instagram.com/futuro_renovable.f.e?igsh=MXNwY3c0NmNvOXdteg=="
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-instagram"
+      aria-label="Visita nuestro perfil de Instagram"
+    >
+      <!-- Ícono SVG de Instagram inline (sin dependencias externas) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+      Visita nuestro Instagram
+    </a>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────── -->
+  <footer>
+    <p>🌿 Proyecto enfocado en el desarrollo sostenible de <strong>México</strong> · Agenda 2030 · ODS 7</p>
+    <div class="bandera-mx" role="img" aria-label="Bandera de México"></div>
+  </footer>
+
+  <!-- ── MARQUESINA: JavaScript ─────────────── -->
+  <script>
+    const mensajes = [
+      { icono: "🌱", texto: "Bienvenidos a un futuro más limpio y renovable" },
+      { icono: "☀️",  texto: "El sol brilla gratis — aprovechemos su energía" },
+      { icono: "💨",  texto: "El viento no contamina: genera electricidad limpia para todos" },
+      { icono: "🌿",  texto: "Cada panel solar instalado es un paso menos de CO₂ en el aire" },
+      { icono: "⚡",  texto: "Energía renovable: poder sin precio para el planeta" },
+      { icono: "🌎",  texto: "Juntos podemos alcanzar el ODS 7 — Energía asequible y no contaminante" }
+    ];
+
+    const ticker  = document.getElementById("ticker");
+    let posicion  = 0;
+    let pausado   = false;
+    const velocidad = 1; // px por frame — sube este número para ir más rápido
+
+    // Construir items (duplicados para bucle continuo sin salto)
+    function construirTicker() {
+      [...mensajes, ...mensajes].forEach(({ icono, texto }) => {
+        const item = document.createElement("span");
+        item.className = "ticker-item";
+        item.innerHTML = `<span>${icono}</span>${texto}`;
+        ticker.appendChild(item);
+      });
+    }
+
+    function animar() {
+      if (!pausado) {
+        posicion -= velocidad;
+        // Al recorrer la mitad del ancho total, reinicia sin salto visible
+        if (Math.abs(posicion) >= ticker.scrollWidth / 2) {
+          posicion = 0;
+        }
+        ticker.style.transform = `translateX(${posicion}px)`;
+      }
+      requestAnimationFrame(animar);
+    }
+
+    // Pausa al pasar el cursor encima
+    ticker.addEventListener("mouseenter", () => { pausado = true;  });
+    ticker.addEventListener("mouseleave", () => { pausado = false; });
+
+    construirTicker();
+    requestAnimationFrame(animar);
+  </script>
+
+</body>
+</html>
