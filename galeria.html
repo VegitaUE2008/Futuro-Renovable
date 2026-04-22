@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Galería de energías renovables y desarrollo sostenible — Futuro Estable, Futuro Renovable" />
+  <title>Galería Renovable · Futuro Renovable</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --tierra-oscura:  #1a0f00;
+      --tierra-media:   #2d1a00;
+      --raiz:           #8b5e1a;
+      --dorado:         #c8902a;
+      --dorado-claro:   #d4a843;
+      --hoja-oscura:    #2a4a10;
+      --hoja-media:     #3d6b1a;
+      --crema:          #f0e8d0;
+      --crema-suave:    #ccc5a8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--tierra-oscura);
+      background-image:
+        radial-gradient(ellipse at 15% 0%,   rgba(61,107,26,.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 100%, rgba(139,94,26,.20) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 50%,  rgba(30,45,10,.15) 0%, transparent 70%);
+      color: var(--crema);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' opacity='0.055'%3E%3Cpath d='M300,600 C300,480 180,440 120,320 C60,200 90,100 0,0' stroke='%23a07830' stroke-width='3' fill='none'/%3E%3Cpath d='M300,600 C300,500 390,450 450,330 C510,210 480,110 600,0' stroke='%23a07830' stroke-width='3' fill='none'/%3E%3Cpath d='M300,600 C300,510 230,470 170,420 C110,370 70,380 0,340' stroke='%23a07830' stroke-width='2' fill='none'/%3E%3Cpath d='M300,600 C300,510 370,475 430,425 C490,375 530,382 600,345' stroke='%23a07830' stroke-width='2' fill='none'/%3E%3Cpath d='M300,600 C295,540 260,510 220,480 C180,450 140,455 100,420' stroke='%23a07830' stroke-width='1.4' fill='none'/%3E%3Cpath d='M300,600 C305,540 340,515 380,485 C420,455 460,458 500,425' stroke='%23a07830' stroke-width='1.4' fill='none'/%3E%3C/svg%3E");
+      background-size: 600px 600px;
+      background-position: bottom center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body > * { position: relative; z-index: 1; }
+
+    /* TICKER */
+    .ticker-wrap {
+      width: 100%;
+      background: linear-gradient(90deg, var(--hoja-oscura) 0%, var(--hoja-media) 50%, var(--hoja-oscura) 100%);
+      padding: 0.5rem 0;
+      overflow: hidden;
+    }
+    .ticker-track { display: flex; white-space: nowrap; will-change: transform; }
+    .ticker-item {
+      padding: 0 2.5rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      color: var(--crema);
+      flex-shrink: 0;
+    }
+    .ticker-item span { color: var(--dorado-claro); margin-right: 0.4rem; }
+
+    /* HEADER */
+    header {
+      position: relative;
+      padding: 4rem 1rem 3rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(200,144,42,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--dorado-claro);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(212,168,67,.3);
+      padding: 0.4rem 1.1rem;
+      border-radius: 20px;
+      transition: background 0.25s, border-color 0.25s, transform 0.2s;
+    }
+    .header-back:hover {
+      background: rgba(212,168,67,.1);
+      border-color: rgba(212,168,67,.6);
+      transform: translateX(-3px);
+    }
+
+    .header-icon {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      display: block;
+      margin-bottom: 0.5rem;
+      animation: flotar 5s ease-in-out infinite;
+    }
+    @keyframes flotar {
+      0%,100% { transform: translateY(0) rotate(-2deg); }
+      50%      { transform: translateY(-8px) rotate(2deg); }
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 900;
+      color: var(--dorado-claro);
+      text-shadow: 0 2px 20px rgba(200,144,42,.4);
+      line-height: 1.1;
+    }
+    header h1 em {
+      font-style: italic;
+      color: var(--crema);
+      display: block;
+      font-size: 0.58em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+      text-shadow: none;
+      opacity: 0.7;
+    }
+
+    .raiz-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem auto 0;
+      max-width: 420px;
+      justify-content: center;
+    }
+    .raiz-divider::before,
+    .raiz-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,168,67,.5), transparent);
+    }
+    .raiz-divider span { font-size: 1.3rem; opacity: 0.7; }
+
+    /* GALERÍA */
+    .galeria-container {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.2rem 2rem;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .galeria-grid .item:nth-child(1) { grid-column: span 2; }
+    .galeria-grid .item:nth-child(5) { grid-column: span 2; }
+
+    .item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      background: var(--tierra-media);
+      border: 1.5px solid rgba(139,94,26,.4);
+      cursor: pointer;
+      aspect-ratio: 3 / 2;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: subirAparecer 0.6s ease forwards;
+    }
+    .item:nth-child(1) { animation-delay: 0.05s; }
+    .item:nth-child(2) { animation-delay: 0.15s; }
+    .item:nth-child(3) { animation-delay: 0.25s; }
+    .item:nth-child(4) { animation-delay: 0.35s; }
+    .item:nth-child(5) { animation-delay: 0.45s; }
+    .item:nth-child(6) { animation-delay: 0.55s; }
+
+    @keyframes subirAparecer { to { opacity: 1; transform: translateY(0); } }
+
+    .item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 9px;
+      border: 2px solid transparent;
+      transition: border-color 0.35s ease;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .item:hover::before { border-color: rgba(200,144,42,.7); }
+
+    .item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(.25,.8,.25,1), filter 0.4s ease;
+      filter: saturate(85%) brightness(0.92);
+    }
+    .item:hover img { transform: scale(1.07); filter: saturate(105%) brightness(1.0); }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,15,0,.75) 0%, rgba(26,15,0,.2) 45%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem 1.2rem;
+      z-index: 2;
+    }
+    .item:hover .overlay { opacity: 1; }
+
+    .overlay-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 900;
+      color: var(--dorado-claro);
+      line-height: 1;
+    }
+    .overlay-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240,232,208,.65);
+      margin-top: 0.2rem;
+    }
+    .overlay-planta {
+      position: absolute;
+      top: 0.6rem; right: 0.8rem;
+      font-size: 1.2rem;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+    }
+    .item:hover .overlay-planta { opacity: 0.7; transform: translateY(0); }
+
+    /* LIGHTBOX */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,7,0,.94);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 1.5rem;
+    }
+    #lightbox.activo { display: flex; }
+
+    #lightbox img {
+      max-width: min(88vw, 1000px);
+      max-height: 82vh;
+      object-fit: contain;
+      border: 2px solid rgba(200,144,42,.5);
+      border-radius: 10px;
+      box-shadow: 0 0 60px rgba(139,94,26,.3), 0 20px 50px rgba(0,0,0,.6);
+      animation: zoomIn 0.3s ease;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    #lb-cerrar {
+      position: absolute;
+      top: 1.2rem; right: 1.5rem;
+      background: rgba(139,94,26,.3);
+      border: 1px solid rgba(200,144,42,.4);
+      color: var(--dorado-claro);
+      font-size: 1.5rem;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    #lb-cerrar:hover { background: rgba(139,94,26,.6); transform: rotate(90deg); }
+
+    .lb-nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(139,94,26,.3);
+      border: 1px solid rgba(200,144,42,.35);
+      color: var(--dorado-claro);
+      font-size: 1.4rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .lb-nav:hover { background: rgba(139,94,26,.6); }
+    .lb-nav.prev { left: 1rem; }
+    .lb-nav.next { right: 1rem; }
+    .lb-nav.prev:hover { transform: translateY(-50%) translateX(-2px); }
+    .lb-nav.next:hover { transform: translateY(-50%) translateX(2px); }
+
+    #lb-contador {
+      position: absolute;
+      bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      color: rgba(212,168,67,.6);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: rgba(204,197,168,.45);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      border-top: 1px solid rgba(139,94,26,.2);
+      margin-top: 1rem;
+    }
+    footer a { color: var(--dorado-claro); text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
+    footer a:hover { opacity: 1; }
+
+    /* HOJAS DECORATIVAS */
+    .deco-fija {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0.06;
+      z-index: 0;
+      font-size: clamp(4rem, 10vw, 8rem);
+      user-select: none;
+    }
+    .deco-fija.d1 { top: 5%;  left: -2%; animation: girar 20s linear infinite; }
+    .deco-fija.d2 { top: 50%; right: -2%; animation: girar 26s linear infinite reverse; }
+    .deco-fija.d3 { bottom: 5%; left: 8%; font-size: clamp(2.5rem, 6vw, 5rem); animation: girar 16s linear infinite; }
+    @keyframes girar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .galeria-grid .item:nth-child(1),
+      .galeria-grid .item:nth-child(5) { grid-column: span 1; }
+    }
+    @media (max-width: 420px) {
+      .galeria-grid { grid-template-columns: 1fr; gap: 7px; }
+      .lb-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deco-fija d1" aria-hidden="true">🌿</div>
+  <div class="deco-fija d2" aria-hidden="true">🍃</div>
+  <div class="deco-fija d3" aria-hidden="true">🌾</div>
+
+  <div class="ticker-wrap" role="marquee" aria-label="Frases sobre naturaleza">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
+  <header>
+    <a href="index.html" class="header-back" aria-label="Volver al inicio">← Volver al inicio</a>
+    <span class="header-icon" aria-hidden="true">⚡</span>
+    <h1>
+      Galería Renovable
+      <em>Solar · Eólica · Futuro Limpio</em>
+    </h1>
+    <div class="raiz-divider" aria-hidden="true">
+      <span>☀️</span><span>⚡</span><span>💨</span>
+    </div>
+  </header>
+
+  <main class="galeria-container">
+    <div class="galeria-grid" id="galeria" role="list" aria-label="Galería de energías renovables">
+    </div>
+  </main>
+
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+    <button id="lb-cerrar" aria-label="Cerrar">✕</button>
+    <button class="lb-nav prev" id="lb-prev" aria-label="Imagen anterior">&#8249;</button>
+    <img id="lb-img" src="" alt="" />
+    <button class="lb-nav next" id="lb-next" aria-label="Siguiente imagen">&#8250;</button>
+    <div id="lb-contador" aria-live="polite"></div>
+  </div>
+
+  <footer>
+    <p>⚡ Galería Renovable · <a href="index.html">Futuro Estable, Futuro Renovable</a> · Agenda 2030 · ODS 7</p>
+  </footer>
+
+  <script>
+    const imagenes = [
+      { src: 'https://suncore.com.mx/wp-content/uploads/2019/05/energia-solar.jpg', alt: 'Imagen 1 — Energía Solar',   label: 'Solar',   icono: '☀️' },
+      { src: 'https://th.bing.com/th/id/R.d88df71bf5ac1eac1781053247f7ee79?rik=mSvtY0pot8Ti7A&pid=ImgRaw&r=0', alt: 'Imagen 2 — Energía Eólica',  label: 'Eólica',  icono: '💨' },
+      { src: 'https://conceptoabc.com/wp-content/uploads/2021/05/energia-limpia.jpg', alt: 'Imagen 3 — Energía Limpia',  label: 'Limpia',  icono: '🌿' },
+      { src: 'https://tse1.explicit.bing.net/th/id/OIP.nz0FyEaU0-iYtOjRILIftAHaE9?rs=1&pid=ImgDetMain&o=7&rm=3', alt: 'Imagen 4 — Paneles Solares', label: 'Paneles', icono: '⚡' },
+      { src: 'https://www.ceupe.com/images/easyblog_articles/1376/b2ap3_large_central-energia-hidroelectrica.jpg', alt: 'Imagen 5 — Energía Hidraulica',label: 'Hidraulica',icono: '🌬️' },
+      { src: 'https://th.bing.com/th/id/R.9993d5c4ea1dbe5989c0954301baaa2e?rik=IggmVses5%2bekww&riu=http%3a%2f%2frevistalima.com.ar%2fwp-content%2fuploads%2f2018%2f01%2fgeothermal2.jpg&ehk=IKXBGV8NP%2bZ9O5t8zbpB%2f%2fZAsCFRPdosT7AZ45WEPQg%3d&risl=&pid=ImgRaw&r=0', alt: 'Imagen 6 — Geotérmica',    label: 'Geotérmica',  icono: '🌱' },
+    ];
+
+    const grid       = document.getElementById('galeria');
+    const lightbox   = document.getElementById('lightbox');
+    const lbImg      = document.getElementById('lb-img');
+    const lbContador = document.getElementById('lb-contador');
+    let   indiceActual = 0;
+
+    imagenes.forEach((img, i) => {
+      const item = document.createElement('div');
+      item.className = 'item';
+      item.setAttribute('role', 'listitem');
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('aria-label', 'Ver ' + img.label + ' en grande');
+
+      item.innerHTML =
+        '<img src="' + img.src + '" alt="' + img.alt + '" loading="lazy" />' +
+        '<div class="overlay">' +
+          '<span class="overlay-planta" aria-hidden="true">' + img.icono + '</span>' +
+          '<span class="overlay-num">0' + (i + 1) + '</span>' +
+          '<span class="overlay-label">' + img.label + '</span>' +
+        '</div>';
+
+      const abrir = function() { abrirLightbox(i); };
+      item.addEventListener('click', abrir);
+      item.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); }
+      });
+
+      grid.appendChild(item);
+    });
+
+    function abrirLightbox(i) {
+      indiceActual = i;
+      actualizarLightbox();
+      lightbox.classList.add('activo');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('lb-cerrar').focus();
+    }
+
+    function cerrarLightbox() {
+      lightbox.classList.remove('activo');
+      document.body.style.overflow = '';
+    }
+
+    function actualizarLightbox() {
+      var img = imagenes[indiceActual];
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbContador.textContent = (indiceActual + 1) + ' / ' + imagenes.length;
+    }
+
+    function navLightbox(dir) {
+      indiceActual = (indiceActual + dir + imagenes.length) % imagenes.length;
+      actualizarLightbox();
+    }
+
+    document.getElementById('lb-cerrar').addEventListener('click', cerrarLightbox);
+    document.getElementById('lb-prev').addEventListener('click',   function() { navLightbox(-1); });
+    document.getElementById('lb-next').addEventListener('click',   function() { navLightbox(+1); });
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) cerrarLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('activo')) return;
+      if (e.key === 'Escape')     cerrarLightbox();
+      if (e.key === 'ArrowLeft')  navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(+1);
+    });
+
+    /* MARQUESINA */
+    var frases = [
+      { icono: '☀️', texto: 'El sol brilla gratis — aprovechemos su energía' },
+      { icono: '💨', texto: 'El viento no contamina: genera electricidad limpia para todos' },
+      { icono: '⚡', texto: 'Energía renovable: poder sin precio para el planeta' },
+      { icono: '🌿', texto: 'Cada panel solar instalado es un paso menos de CO₂ en el aire' },
+      { icono: '🌎', texto: 'Juntos podemos alcanzar el ODS 7 — Energía asequible y no contaminante' },
+      { icono: '🌱', texto: 'Un México renovable es un México libre e independiente' },
+    ];
+
+    var ticker  = document.getElementById('ticker');
+    var posicion = 0;
+    var pausado  = false;
+
+    frases.concat(frases).forEach(function(f) {
+      var item = document.createElement('span');
+      item.className = 'ticker-item';
+      item.innerHTML = '<span>' + f.icono + '</span>' + f.texto;
+      ticker.appendChild(item);
+    });
+
+    function animarTicker() {
+      if (!pausado) {
+        posicion -= 0.9;
+        if (Math.abs(posicion) >= ticker.scrollWidth / 2) posicion = 0;
+        ticker.style.transform = 'translateX(' + posicion + 'px)';
+      }
+      requestAnimationFrame(animarTicker);
+    }
+
+    ticker.addEventListener('mouseenter', function() { pausado = true;  });
+    ticker.addEventListener('mouseleave', function() { pausado = false; });
+    requestAnimationFrame(animarTicker);
+  </script>
+
+</body>
+</html>
