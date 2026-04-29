@@ -6,15 +6,11 @@
   <meta name="description" content="Concientización sobre energías renovables y desarrollo sostenible en México." />
   <title>Futuro Estable, Futuro Renovable</title>
 
-  <!-- Fuentes: Playfair Display para títulos + DM Sans para cuerpo -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* ═══════════════════════════════════════════
-       VARIABLES & RESET
-    ═══════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -38,9 +34,7 @@
       overflow-x: hidden;
     }
 
-    /* ═══════════════════════════════════════════
-       MARQUESINA / TICKER (controlada por JS)
-    ═══════════════════════════════════════════ */
+    /* ── TICKER ── */
     .ticker-wrap {
       width: 100%;
       background: linear-gradient(90deg, var(--verde-bosque) 0%, var(--verde-medio) 50%, var(--verde-bosque) 100%);
@@ -49,11 +43,7 @@
       position: relative;
       z-index: 1001;
     }
-    .ticker-track {
-      display: flex;
-      white-space: nowrap;
-      will-change: transform;
-    }
+    .ticker-track { display: flex; white-space: nowrap; will-change: transform; }
     .ticker-item {
       padding: 0 2.5rem;
       font-family: 'DM Sans', sans-serif;
@@ -65,9 +55,7 @@
     }
     .ticker-item span { color: var(--sol); margin-right: 0.4rem; }
 
-    /* ═══════════════════════════════════════════
-       HEADER
-    ═══════════════════════════════════════════ */
+    /* ── HEADER ── */
     header {
       position: relative;
       background: linear-gradient(135deg, #0d6e4a 0%, #11998e 55%, #38ef7d 100%);
@@ -76,8 +64,6 @@
       text-align: center;
       overflow: hidden;
     }
-
-    /* Decoración: sol y hojas SVG incrustados */
     header::before {
       content: '';
       position: absolute;
@@ -124,18 +110,10 @@
       font-weight: 300;
     }
 
-    /* Olas decorativas al pie del header */
-    .wave-divider {
-      display: block;
-      width: 100%;
-      line-height: 0;
-      overflow: hidden;
-    }
+    .wave-divider { display: block; width: 100%; line-height: 0; overflow: hidden; }
     .wave-divider svg { display: block; width: 100%; height: 60px; }
 
-    /* ═══════════════════════════════════════════
-       NAVEGACIÓN STICKY
-    ═══════════════════════════════════════════ */
+    /* ── NAV ── */
     nav {
       display: flex;
       justify-content: center;
@@ -168,9 +146,7 @@
       outline: none;
     }
 
-    /* ═══════════════════════════════════════════
-       SECCIONES
-    ═══════════════════════════════════════════ */
+    /* ── SECCIONES ── */
     section {
       max-width: 820px;
       margin: 3.5rem auto;
@@ -182,8 +158,6 @@
       overflow: hidden;
       animation: aparecer 0.9s ease both;
     }
-
-    /* Acento verde lateral */
     section::before {
       content: '';
       position: absolute;
@@ -192,7 +166,6 @@
       background: linear-gradient(180deg, var(--verde-medio), var(--verde-claro));
       border-radius: 20px 0 0 20px;
     }
-
     @keyframes aparecer {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0);    }
@@ -217,9 +190,7 @@
     }
     p:last-of-type { margin-bottom: 0; }
 
-    /* ═══════════════════════════════════════════
-       IMÁGENES
-    ═══════════════════════════════════════════ */
+    /* ── IMÁGENES ── */
     .img-seccion {
       display: block;
       width: 100%;
@@ -235,9 +206,7 @@
       box-shadow: 0 12px 30px rgba(13,110,74,.2);
     }
 
-    /* ═══════════════════════════════════════════
-       TARJETAS DE DATOS (ODS)
-    ═══════════════════════════════════════════ */
+    /* ── TARJETAS ODS ── */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -269,9 +238,7 @@
       font-weight: 600;
     }
 
-    /* ═══════════════════════════════════════════
-       EQUIPO (quiénes somos)
-    ═══════════════════════════════════════════ */
+    /* ── EQUIPO ── */
     .equipo-chips {
       display: flex;
       flex-wrap: wrap;
@@ -287,9 +254,7 @@
       font-weight: 600;
     }
 
-    /* ═══════════════════════════════════════════
-       BOTÓN INSTAGRAM
-    ═══════════════════════════════════════════ */
+    /* ── BOTÓN INSTAGRAM ── */
     .btn-instagram {
       display: inline-flex;
       align-items: center;
@@ -310,9 +275,7 @@
       outline: none;
     }
 
-    /* ═══════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════ */
+    /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 2.5rem 1rem;
@@ -329,7 +292,7 @@
       border: 1px solid #dde;
     }
 
-    /* Decoración flotante de hojas/naturaleza de fondo */
+    /* ── DECO HOJAS ── */
     .deco-hoja {
       position: fixed;
       pointer-events: none;
@@ -343,104 +306,122 @@
     .deco-hoja.h3 { bottom: 8%; left: 10%; animation: girar 15s linear infinite; font-size: 5rem; }
     @keyframes girar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    /* ═══════════════════════════════════════════
-       SECCIÓN GALERÍA — TEMA NATURALEZA / RAÍCES
-    ═══════════════════════════════════════════ */
+    /* ════════════════════════════════════════
+       SECCIÓN GALERÍA — rediseñada acorde
+    ════════════════════════════════════════ */
     #galeria-seccion {
-      background: linear-gradient(160deg, #1a0f00 0%, #2d1a00 40%, #1e2d0a 100%);
+      background: linear-gradient(145deg, #0d6e4a 0%, #11998e 60%, #1ab87a 100%);
       border-radius: 20px;
-      color: #f0e8d0;
+      color: var(--blanco);
       overflow: hidden;
       position: relative;
+      box-shadow: 0 12px 40px rgba(13,110,74,.25);
     }
 
-    /* Cancelar el acento lateral verde heredado de section::before */
+    /* Cancelar el acento lateral heredado y usar el color blanco */
     #galeria-seccion::before {
-      background: linear-gradient(180deg, #8b5e1a, #c8a050);
+      background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(56,239,125,.5));
     }
 
-    /* Red de raíces SVG como textura de fondo */
+    /* Patrón de olas SVG como textura de fondo */
     #galeria-seccion::after {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' opacity='0.07'%3E%3Cpath d='M200,400 C200,300 120,280 80,200 C40,120 60,60 0,0' stroke='%23a07830' stroke-width='2.5' fill='none'/%3E%3Cpath d='M200,400 C200,320 260,290 300,210 C340,130 320,70 400,0' stroke='%23a07830' stroke-width='2.5' fill='none'/%3E%3Cpath d='M200,400 C200,310 150,260 100,240 C60,225 30,240 0,200' stroke='%23a07830' stroke-width='1.8' fill='none'/%3E%3Cpath d='M200,400 C200,310 250,270 310,250 C360,234 390,245 400,210' stroke='%23a07830' stroke-width='1.8' fill='none'/%3E%3Cpath d='M200,400 C195,350 170,330 140,310 C110,290 80,295 60,270' stroke='%23a07830' stroke-width='1.2' fill='none'/%3E%3Cpath d='M200,400 C205,350 230,335 260,315 C290,295 320,298 340,275' stroke='%23a07830' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' opacity='0.06'%3E%3Cpath d='M0,200 C50,150 100,250 150,200 C200,150 250,250 300,200 C350,150 380,220 400,200' stroke='%23ffffff' stroke-width='2.5' fill='none'/%3E%3Cpath d='M0,280 C50,230 100,330 150,280 C200,230 250,330 300,280 C350,230 380,300 400,280' stroke='%23ffffff' stroke-width='2' fill='none'/%3E%3Cpath d='M0,120 C50,70 100,170 150,120 C200,70 250,170 300,120 C350,70 380,140 400,120' stroke='%23ffffff' stroke-width='1.5' fill='none'/%3E%3Cpath d='M0,360 C50,310 100,400 150,360 C200,310 250,400 300,360 C350,310 380,380 400,360' stroke='%23ffffff' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
       background-size: 400px 400px;
-      background-position: bottom center;
       pointer-events: none;
       z-index: 0;
     }
 
     #galeria-seccion > * { position: relative; z-index: 1; }
 
-    #galeria-seccion h2 {
-      color: #d4a843;
-      text-shadow: 0 2px 8px rgba(0,0,0,.4);
-      font-size: clamp(1.5rem, 4vw, 1.85rem);
-    }
-
-    #galeria-seccion p {
-      color: #ccc5a8;
-    }
-
-    /* Decoración de plantas en las esquinas */
+    /* Plantas decorativas en esquinas */
     .planta-deco {
       position: absolute;
       font-size: clamp(3.5rem, 8vw, 6rem);
-      opacity: 0.18;
+      opacity: 0.12;
       pointer-events: none;
       line-height: 1;
       z-index: 0;
     }
     .planta-deco.p1 { top: -10px;  right: 10px;  transform: rotate(15deg);  }
     .planta-deco.p2 { bottom: -10px; left: 5px;  transform: rotate(-20deg); }
-    .planta-deco.p3 { top: 40%;   right: -10px; transform: rotate(30deg);  font-size: clamp(2rem, 5vw, 3.5rem); opacity: 0.12; }
+    .planta-deco.p3 { top: 40%;   right: -10px; transform: rotate(30deg); font-size: clamp(2rem, 5vw, 3.5rem); opacity: 0.08; }
 
-    /* Vista previa mini de la galería */
+    #galeria-seccion h2 {
+      color: var(--blanco);
+      text-shadow: 0 2px 10px rgba(0,0,0,.2);
+      font-size: clamp(1.5rem, 4vw, 1.85rem);
+    }
+
+    #galeria-seccion p {
+      color: rgba(255,255,255,.88);
+    }
+
+    /* Vista previa mini — 3×2 con imágenes reales en miniatura */
     .galeria-preview {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin: 1.6rem 0;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      border: 1.5px solid rgba(212,168,67,.25);
+      border: 1.5px solid rgba(255,255,255,.25);
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
     }
+
     .preview-cell {
       aspect-ratio: 4/3;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(212,168,67,.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      color: rgba(212,168,67,.4);
-      transition: background 0.3s;
+      overflow: hidden;
+      background: rgba(255,255,255,.08);
+      position: relative;
     }
-    .preview-cell:hover { background: rgba(212,168,67,.08); }
 
-    /* Botón de galería */
+    .preview-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85) saturate(90%);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .preview-cell:hover img {
+      transform: scale(1.08);
+      filter: brightness(1) saturate(110%);
+    }
+
+    /* Overlay verde suave sobre cada miniatura */
+    .preview-cell::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(13,110,74,.15);
+      pointer-events: none;
+      transition: background 0.3s ease;
+    }
+    .preview-cell:hover::after { background: rgba(13,110,74,.0); }
+
+    /* Botón galería — estilo acorde al resto del sitio */
     .btn-galeria {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      background: linear-gradient(135deg, #8b5e1a 0%, #c8902a 50%, #a06820 100%);
-      color: #fff8e8;
+      background: var(--blanco);
+      color: var(--verde-bosque);
       padding: 0.85rem 2.2rem;
       text-decoration: none;
       border-radius: 40px;
       font-family: 'DM Sans', sans-serif;
       font-weight: 700;
       font-size: clamp(0.9rem, 2.5vw, 1rem);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       margin-top: 0.6rem;
-      border: 2px solid rgba(212,168,67,.4);
-      box-shadow:
-        0 0 20px rgba(139,94,26,.5),
-        0 4px 16px rgba(0,0,0,.35),
-        inset 0 1px 0 rgba(255,255,255,.15);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      border: 2px solid rgba(255,255,255,.6);
+      box-shadow: 0 4px 20px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.8);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
       position: relative;
       overflow: hidden;
     }
@@ -451,7 +432,7 @@
       position: absolute;
       top: -50%; left: -80%;
       width: 50%; height: 200%;
-      background: rgba(255,255,255,.2);
+      background: rgba(56,239,125,.25);
       transform: skewX(-20deg);
       transition: left 0.45s ease;
     }
@@ -459,36 +440,26 @@
 
     .btn-galeria:hover, .btn-galeria:focus {
       transform: translateY(-3px) scale(1.03);
-      box-shadow:
-        0 0 30px rgba(200,144,42,.6),
-        0 8px 24px rgba(0,0,0,.4),
-        inset 0 1px 0 rgba(255,255,255,.2);
-      filter: brightness(1.1);
-      outline: 2px solid rgba(212,168,67,.6);
-      outline-offset: 3px;
+      background: var(--verde-claro);
+      color: var(--verde-bosque);
+      box-shadow: 0 8px 28px rgba(0,0,0,.2), 0 0 0 3px rgba(255,255,255,.4);
+      outline: none;
     }
-    .btn-galeria:active {
-      transform: scale(0.97);
-    }
-
-    .btn-galeria .btn-icono { font-size: 1.3em; }
+    .btn-galeria:active { transform: scale(0.97); }
+    .btn-galeria .btn-icono { font-size: 1.2em; }
 
     /* Leyenda debajo del botón */
     .galeria-hint {
       display: block;
       margin-top: 0.9rem;
       font-size: 0.8rem;
-      color: rgba(204,197,168,.55);
+      color: rgba(255,255,255,.55);
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    /* ═══════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════ */
-    @media (max-width: 820px) {
-      section { margin: 2rem 1.2rem; }
-    }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 820px) { section { margin: 2rem 1.2rem; } }
 
     @media (max-width: 600px) {
       header { padding: 3.5rem 1rem 3rem; }
@@ -508,31 +479,26 @@
 </head>
 <body>
 
-  <!-- Hojas decorativas de fondo (puro CSS + emoji) -->
   <div class="deco-hoja h1" aria-hidden="true">🌿</div>
   <div class="deco-hoja h2" aria-hidden="true">☀️</div>
   <div class="deco-hoja h3" aria-hidden="true">🍃</div>
 
-  <!-- ── MARQUESINA (contenido generado por JS) ── -->
   <div class="ticker-wrap" role="marquee" aria-label="Bienvenida">
     <div class="ticker-track" id="ticker"></div>
   </div>
 
-  <!-- ── HEADER ─────────────────────────────── -->
   <header>
     <span class="header-icon" aria-hidden="true">🌱</span>
     <h1>Futuro Estable,<br>Futuro Renovable</h1>
     <p class="header-sub">Educación · Energía Limpia · Desarrollo Sostenible</p>
   </header>
 
-  <!-- Ola decorativa -->
   <div class="wave-divider" aria-hidden="true">
     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#e0f7fa"/>
     </svg>
   </div>
 
-  <!-- ── NAVEGACIÓN ─────────────────────────── -->
   <nav aria-label="Menú principal">
     <a href="#inicio">🏠 Inicio</a>
     <a href="#ods">☀️ ODS 7</a>
@@ -541,7 +507,6 @@
     <a href="#descubre-mas">🔗 Descubre Más</a>
   </nav>
 
-  <!-- ── SECCIÓN: INICIO ────────────────────── -->
   <section id="inicio">
     <h2><span class="icono" aria-hidden="true">🌿</span> Inicio</h2>
     <p>
@@ -562,7 +527,6 @@
     />
   </section>
 
-  <!-- ── SECCIÓN: ODS 7 ─────────────────────── -->
   <section id="ods">
     <h2><span class="icono" aria-hidden="true">☀️</span> ODS 7: El Reto en México</h2>
     <p>
@@ -575,8 +539,6 @@
       comunidades aisladas, reducir la dependencia de hidrocarburos y mejorar la
       calidad del aire en nuestras ciudades.
     </p>
-
-    <!-- Tarjetas de datos -->
     <div class="cards-grid">
       <div class="card-dato">
         <div class="numero">35 %</div>
@@ -591,7 +553,6 @@
         <div class="etiqueta">Capacidad renovable instalable estimada</div>
       </div>
     </div>
-
     <img
       src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80"
       alt="Parque de energía eólica al atardecer"
@@ -601,7 +562,6 @@
     />
   </section>
 
-  <!-- ── SECCIÓN: QUIÉNES SOMOS ─────────────── -->
   <section id="quienes-somos">
     <h2><span class="icono" aria-hidden="true">🌍</span> Quiénes Somos</h2>
     <p>
@@ -623,7 +583,6 @@
     </div>
   </section>
 
-  <!-- ── SECCIÓN: DESCUBRE MÁS ─────────────── -->
   <section id="descubre-mas">
     <h2><span class="icono" aria-hidden="true">🔗</span> Descubre Más</h2>
     <p>
@@ -638,7 +597,6 @@
       class="btn-instagram"
       aria-label="Visita nuestro perfil de Instagram"
     >
-      <!-- Ícono SVG de Instagram inline (sin dependencias externas) -->
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
@@ -648,35 +606,45 @@
     </a>
   </section>
 
-  <!-- ── SECCIÓN: GALERÍA DE IMÁGENES ─────────── -->
+  <!-- ── SECCIÓN GALERÍA — rediseñada ── -->
   <section id="galeria-seccion" aria-labelledby="galeria-titulo">
 
-    <!-- Plantas decorativas en esquinas -->
-    <div class="planta-deco p1" aria-hidden="true">🌳</div>
-    <div class="planta-deco p2" aria-hidden="true">🌿</div>
-    <div class="planta-deco p3" aria-hidden="true">🍃</div>
+    <div class="planta-deco p1" aria-hidden="true">🌿</div>
+    <div class="planta-deco p2" aria-hidden="true">🍃</div>
+    <div class="planta-deco p3" aria-hidden="true">🌱</div>
 
     <h2 id="galeria-titulo">
-      <span class="icono" aria-hidden="true">🌾</span> Galería Renovable
+      <span class="icono" aria-hidden="true">🖼️</span> Galería Renovable
     </h2>
 
     <p>
-      Explora nuestra colección de imágenes sobre la naturaleza, los ecosistemas
-      y las energías renovables que inspiran nuestro proyecto. Cada fotografía
-      cuenta una historia de raíces, vida y esperanza para el planeta.
+      Explora nuestra colección de imágenes sobre energías renovables, ecosistemas
+      y el futuro limpio que construimos juntos. Haz clic en cada foto para verla
+      completa.
     </p>
 
-    <!-- Mini cuadrícula decorativa (vista previa) -->
+    <!-- Vista previa 3×2 con las imágenes reales de la galería -->
     <div class="galeria-preview" aria-hidden="true">
-      <div class="preview-cell"></div>
-      <div class="preview-cell"></div>
-      <div class="preview-cell"></div>
-      <div class="preview-cell"></div>
-      <div class="preview-cell"></div>
-      <div class="preview-cell"></div>
+      <div class="preview-cell">
+        <img src="https://suncore.com.mx/wp-content/uploads/2019/05/energia-solar.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="preview-cell">
+        <img src="https://th.bing.com/th/id/R.d88df71bf5ac1eac1781053247f7ee79?rik=mSvtY0pot8Ti7A&pid=ImgRaw&r=0" alt="" loading="lazy" />
+      </div>
+      <div class="preview-cell">
+        <img src="https://conceptoabc.com/wp-content/uploads/2021/05/energia-limpia.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="preview-cell">
+        <img src="https://tse1.explicit.bing.net/th/id/OIP.nz0FyEaU0-iYtOjRILIftAHaE9?rs=1&pid=ImgDetMain&o=7&rm=3" alt="" loading="lazy" />
+      </div>
+      <div class="preview-cell">
+        <img src="https://www.ceupe.com/images/easyblog_articles/1376/b2ap3_large_central-energia-hidroelectrica.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="preview-cell">
+        <img src="https://th.bing.com/th/id/R.9993d5c4ea1dbe5989c0954301baaa2e?rik=IggmVses5%2bekww&riu=http%3a%2f%2frevistalima.com.ar%2fwp-content%2fuploads%2f2018%2f01%2fgeothermal2.jpg&ehk=IKXBGV8NP%2bZ9O5t8zbpB%2f%2fZAsCFRPdosT7AZ45WEPQg%3d&risl=&pid=ImgRaw&r=0" alt="" loading="lazy" />
+      </div>
     </div>
 
-    <!-- Botón principal -->
     <a
       href="galeria.html"
       target="_blank"
@@ -684,21 +652,19 @@
       class="btn-galeria"
       aria-label="Abrir galería de imágenes en nueva pestaña"
     >
-      <span class="btn-icono" aria-hidden="true">🖼️</span>
+      <span class="btn-icono" aria-hidden="true">⚡</span>
       Ver Galería Completa
     </a>
 
-    <span class="galeria-hint" aria-hidden="true">🌿 · raíces · naturaleza · vida · 🌿</span>
+    <span class="galeria-hint" aria-hidden="true">☀️ · solar · eólica · hidráulica · geotérmica · ☀️</span>
 
   </section>
 
-  <!-- ── FOOTER ─────────────────────────────── -->
   <footer>
     <p>🌿 Proyecto enfocado en el desarrollo sostenible de <strong>México</strong> · Agenda 2030 · ODS 7</p>
     <div class="bandera-mx" role="img" aria-label="Bandera de México"></div>
   </footer>
 
-  <!-- ── MARQUESINA: JavaScript ─────────────── -->
   <script>
     const mensajes = [
       { icono: "🌱", texto: "Bienvenidos a un futuro más limpio y renovable" },
@@ -712,9 +678,8 @@
     const ticker  = document.getElementById("ticker");
     let posicion  = 0;
     let pausado   = false;
-    const velocidad = 1; // px por frame — sube este número para ir más rápido
+    const velocidad = 1;
 
-    // Construir items (duplicados para bucle continuo sin salto)
     function construirTicker() {
       [...mensajes, ...mensajes].forEach(({ icono, texto }) => {
         const item = document.createElement("span");
@@ -727,16 +692,12 @@
     function animar() {
       if (!pausado) {
         posicion -= velocidad;
-        // Al recorrer la mitad del ancho total, reinicia sin salto visible
-        if (Math.abs(posicion) >= ticker.scrollWidth / 2) {
-          posicion = 0;
-        }
+        if (Math.abs(posicion) >= ticker.scrollWidth / 2) posicion = 0;
         ticker.style.transform = `translateX(${posicion}px)`;
       }
       requestAnimationFrame(animar);
     }
 
-    // Pausa al pasar el cursor encima
     ticker.addEventListener("mouseenter", () => { pausado = true;  });
     ticker.addEventListener("mouseleave", () => { pausado = false; });
 
