@@ -475,6 +475,59 @@
       nav { gap: 0.3rem; padding: 0.7rem 0.5rem; }
       nav a { font-size: 0.78rem; padding: 0.38rem 0.7rem; }
     }
+    /* ── SECCIÓN PREGUNTAS FRECUENTES (FAQ) ── */
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    details {
+      background: #f0fdf4;
+      border: 1px solid #b6edd1;
+      border-radius: 12px;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+    }
+
+    details[open] {
+      background: var(--blanco);
+      box-shadow: 0 4px 15px rgba(13, 110, 74, 0.1);
+      border-color: var(--verde-claro);
+    }
+
+    summary {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      font-weight: 600;
+      color: var(--verde-bosque);
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+    }
+
+    summary::after {
+      content: '➕';
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    details[open] summary::after {
+      content: '➖';
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0.5rem 0 1rem 0;
+      font-size: 0.95rem;
+      color: var(--texto-suave);
+      line-height: 1.6;
+      border-top: 1px solid rgba(13, 110, 74, 0.1);
+    }
   </style>
 </head>
 <body>
@@ -657,7 +710,61 @@
     </a>
 
     <span class="galeria-hint" aria-hidden="true">☀️ · solar · eólica · hidráulica · geotérmica · ☀️</span>
+<section id="faq">
+    <h2><span class="icono" aria-hidden="true">❓</span> Preguntas Frecuentes sobre nuestra ODS 7</h2>
+    <p>Despeja tus dudas sobre la energía asequible y no contaminante en México.</p>
 
+    <div class="faq-container">
+      <details>
+        <summary>¿Qué es exactamente la ODS 7?</summary>
+        <div class="faq-answer">
+          Es el Objetivo de Desarrollo Sostenible que busca garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos los habitantes del planeta antes del 2030.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Por qué es importante para México?</summary>
+        <div class="faq-answer">
+          México tiene una ubicación privilegiada para la energía solar y eólica. Lograr la soberanía energética mediante renovables reduciría los costos de luz y la contaminación en nuestras ciudades.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Cuál es la meta de México para el 2030?</summary>
+        <div class="faq-answer">
+          El compromiso bajo el Acuerdo de París es alcanzar un 35% de generación eléctrica a través de fuentes limpias y reducir significativamente las emisiones de gases de efecto invernadero.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Qué se considera "energía limpia"?</summary>
+        <div class="faq-answer">
+          Son fuentes que no agotan los recursos naturales ni emiten gases contaminantes, como la solar (sol), eólica (viento), hidráulica (agua), geotérmica (calor de la tierra) y biomasa.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Cómo ayuda la ODS 7 a las comunidades aisladas?</summary>
+        <div class="faq-answer">
+          Permite instalar sistemas independientes (como paneles solares en techos) en zonas donde no llegan las redes eléctricas tradicionales, mejorando la salud y educación de estas familias.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Es más cara la energía renovable?</summary>
+        <div class="faq-answer">
+          Actualmente, la tecnología solar y eólica es la más barata de la historia. Aunque la instalación inicial requiere inversión, el costo de "combustible" es cero, lo que ahorra dinero a largo plazo.
+        </div>
+      </details>
+
+      <details>
+        <summary>¿Qué puedo hacer yo para apoyar este objetivo?</summary>
+        <div class="faq-answer">
+          Puedes empezar por reducir tu consumo eléctrico, informarte sobre paneles solares para el hogar y, sobre todo, compartir información (como esta página) para crear conciencia colectiva.
+        </div>
+      </details>
+    </div>
+  
   </section>
 
   <footer>
