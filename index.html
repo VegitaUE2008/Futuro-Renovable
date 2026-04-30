@@ -9,7 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
-
+  
+<!-- El nuevo script para la gráfica -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -614,6 +617,83 @@
       width="800"
     />
   </section>
+  
+  <section id="grafica-renovables">
+  <h2><span class="icono" aria-hidden="true">📊</span> Estados Líderes en Energía Limpia</h2>
+  <p>Distribución de la generación de energía renovable por estado y su fuente principal.</p>
+  
+  <!-- Contenedor de la gráfica -->
+  <div style="position: relative; height: 40vh; width: 100%; margin: 2rem 0;">
+    <canvas id="chartRenovables"></canvas>
+  </div>
+
+  <!-- Leyenda Informativa -->
+  <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin-top: 1rem;">
+    <div class="card-dato" style="padding: 0.8rem;">
+      <div class="etiqueta" style="color: var(--verde-bosque)">Oaxaca</div>
+      <div class="etiqueta">Eólica 💨</div>
+    </div>
+    <div class="card-dato" style="padding: 0.8rem;">
+      <div class="etiqueta" style="color: var(--verde-bosque)">Sonora</div>
+      <div class="etiqueta">Solar ☀️</div>
+    </div>
+    <div class="card-dato" style="padding: 0.8rem;">
+      <div class="etiqueta" style="color: var(--verde-bosque)">Chiapas</div>
+      <div class="etiqueta">Hidráulica 💧</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const ctx = document.getElementById('chartRenovables').getContext('2d');
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: [
+        'Oaxaca (Eólica) - 28%', 
+        'Sonora (Solar) - 22%', 
+        'Chiapas (Hidro) - 18%', 
+        'Tamaulipas (Eólica) - 15%', 
+        'Baja California (Geotérmica) - 10%', 
+        'Otros - 7%'
+      ],
+      datasets: [{
+        data: [28, 22, 18, 15, 10, 7],
+        backgroundColor: [
+          '#0d6e4a', // Verde Bosque
+          '#f5c518', // Sol
+          '#11998e', // Verde Medio
+          '#38ef7d', // Verde Claro
+          '#cc2366', // Acento Geotérmico
+          '#e0f7fa'  // Cielo
+        ],
+        borderWidth: 2,
+        borderColor: '#ffffff'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            font: { family: 'DM Sans', size: 12 },
+            color: '#2d3a2e',
+            padding: 20
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return ' Participación: ' + context.raw + '%';
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
 
   <section id="quienes-somos">
     <h2><span class="icono" aria-hidden="true">🌍</span> Quiénes Somos</h2>
@@ -708,6 +788,7 @@
       <span class="btn-icono" aria-hidden="true">⚡</span>
       Ver Galería Completa
     </a>
+  </section>
 
     <span class="galeria-hint" aria-hidden="true">☀️ · solar · eólica · hidráulica · geotérmica · ☀️</span>
 <section id="faq">
@@ -764,7 +845,6 @@
         </div>
       </details>
     </div>
-  
   </section>
 
   <footer>
