@@ -263,57 +263,6 @@
       margin-bottom: 0;
     }
 
-    /* ── TABLA COMPARATIVA ── */
-    .table-container {
-      width: 100%;
-      overflow-x: auto;
-      margin-top: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.95rem;
-    }
-    th, td {
-      padding: 1rem;
-      border-bottom: 1px solid #e2f5ec;
-    }
-    th {
-      background-color: var(--verde-bosque);
-      color: var(--blanco);
-      font-weight: 600;
-      font-family: 'Playfair Display', serif;
-    }
-    tr:nth-child(even) {
-      background-color: #f8fdfb;
-    }
-    tr:hover {
-      background-color: #eefaf4;
-    }
-
-    /* ── BLOQUES MITOS VS REALIDADES ── */
-    .split-box {
-      background: #f0fdf4;
-      border-left: 4px solid var(--verde-medio);
-      padding: 1rem 1.2rem;
-      margin-bottom: 1rem;
-      border-radius: 0 12px 12px 0;
-    }
-    .split-box .mito {
-      color: #c8102e;
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.2rem;
-    }
-    .split-box .realidad {
-      color: var(--verde-bosque);
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
-
     /* ── EQUIPO ── */
     .equipo-chips {
       display: flex;
@@ -523,9 +472,7 @@
     <a href="#inicio">🏠 Inicio</a>
     <a href="#ods">☀️ ODS 7</a>
     <a href="#grafica-renovables">📊 Estadísticas</a>
-    <a href="#comparativa">📊 Comparativa</a>
     <a href="#datos-curiosos">💡 Datos Curiosos</a>
-    <a href="#mitos">🧠 Mitos</a>
     <a href="#quienes-somos">👥 Quiénes Somos</a>
     <a href="#galeria-seccion">🌿 Galería</a>
     <a href="#faq">❓ Preguntas</a>
@@ -555,7 +502,7 @@
   <section id="ods">
     <h2><span class="icono" aria-hidden="true">☀️</span> ODS 7: El Reto en México</h2>
     <p>
-      México posee un potential enorme para generar energía solar y eólica. Bajo los
+      México posee un potencial enorme para generar energía solar y eólica. Bajo los
       lineamientos de la <strong>Agenda 2030</strong>, el país busca que el
       <strong>35 % de su energía</strong> provenga de fuentes limpias.
     </p>
@@ -664,51 +611,6 @@
     });
   </script>
 
-  <!-- ── SECCIÓN NUEVA: COMPARATIVA DE ENERGÍAS ── -->
-  <section id="comparativa">
-    <h2><span class="icono" aria-hidden="true">📊</span> Comparativa de Tecnologías Limpias</h2>
-    <p>Cada fuente tiene un rol estratégico e implicaciones particulares en el ecosistema energético de nuestro país:</p>
-    
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Fuente</th>
-            <th>Potencial en México</th>
-            <th>Ventaja Clave</th>
-            <th>Principal Reto</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Solar (Fotovoltaica)</strong></td>
-            <td>Máximo (85% del territorio es óptimo)</td>
-            <td>Ideal para autoconsumo urbano</td>
-            <td>Intermitencia en días nublados</td>
-          </tr>
-          <tr>
-            <td><strong>Eólica</strong></td>
-            <td>Alto (Istmo de Tehuantepec, Norte)</td>
-            <td>Alta producción a gran escala</td>
-            <td>Impacto visual y en rutas de aves</td>
-          </tr>
-          <tr>
-            <td><strong>Hidroeléctrica</strong></td>
-            <td>Estable (Suroeste del país)</td>
-            <td>Generación continua y bajo demanda</td>
-            <td>Dependencia estacional de lluvias</td>
-          </tr>
-          <tr>
-            <td><strong>Geotérmica</strong></td>
-            <td>Moderado-Alto (Zonas volcánicas)</td>
-            <td>No depende del clima (24/7)</td>
-            <td>Alta inversión inicial de exploración</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
   <!-- ── SECCIÓN NUEVA: DATOS CURIOSOS ── -->
   <section id="datos-curiosos">
     <h2><span class="icono" aria-hidden="true">💡</span> Datos Curiosos del Futuro Verde</h2>
@@ -768,27 +670,6 @@
         </div>
         <p>El primer uso práctico importante de los paneles solares ocurrió en el espacio profundo. La NASA los implementó con éxito para alimentar el satélite <em>Vanguard 1</em> en 1958.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ── SECCIÓN NUEVA: MITOS VS REALIDADES ── -->
-  <section id="mitos">
-    <h2><span class="icono" aria-hidden="true">🧠</span> Mitos vs. Realidades</h2>
-    <p>Desmintiendo de forma breve algunas de las ideas erróneas más comunes sobre la transición verde:</p>
-    
-    <div class="split-box">
-      <div class="mito">❌ Mito: "Las energías renovables son demasiado caras."</div>
-      <div class="realidad">✅ Realidad: Hoy en día, generar electricidad con sol o viento es sustancialmente más barato que construir nuevas plantas de carbón o gas.</div>
-    </div>
-
-    <div class="split-box">
-      <div class="mito">❌ Mito: "Si no hay viento o es de noche, nos quedamos sin luz."</div>
-      <div class="realidad">✅ Realidad: Las redes modernas combinan múltiples fuentes (como hidroeléctrica o geotérmica) y usan macrobaterías para respaldar el suministro.</div>
-    </div>
-
-    <div class="split-box">
-      <div class="mito">❌ Mito: "Fabricar paneles e instalaciones contamina más de lo que ahorran."</div>
-      <div class="realidad">✅ Realidad: Un panel solar recupera la energía utilizada en su fabricación e instalación durante sus primeros 1 a 2 años de vida; luego produce energía 100% limpia por casi tres décadas.</div>
     </div>
   </section>
 
@@ -966,4 +847,3 @@
 
 </body>
 </html>
-  
