@@ -263,6 +263,57 @@
       margin-bottom: 0;
     }
 
+    /* ── TABLA COMPARATIVA ── */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid #e2f5ec;
+    }
+    th {
+      background-color: var(--verde-bosque);
+      color: var(--blanco);
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fdfb;
+    }
+    tr:hover {
+      background-color: #eefaf4;
+    }
+
+    /* ── BLOQUES MITOS VS REALIDADES ── */
+    .split-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--verde-medio);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      border-radius: 0 12px 12px 0;
+    }
+    .split-box .mito {
+      color: #c8102e;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .split-box .realidad {
+      color: var(--verde-bosque);
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
     /* ── EQUIPO ── */
     .equipo-chips {
       display: flex;
@@ -472,9 +523,12 @@
     <a href="#inicio">🏠 Inicio</a>
     <a href="#ods">☀️ ODS 7</a>
     <a href="#grafica-renovables">📊 Estadísticas</a>
+    <a href="#comparativa">📊 Comparativa</a>
     <a href="#datos-curiosos">💡 Datos Curiosos</a>
+    <a href="#mitos">🧠 Mitos</a>
     <a href="#quienes-somos">👥 Quiénes Somos</a>
     <a href="#galeria-seccion">🌿 Galería</a>
+    <a href="#video-narrativo">🎬 Video Narrativo</a>
     <a href="#faq">❓ Preguntas</a>
     <a href="#descubre-mas">🔗 Descubre Más</a>
   </nav>
@@ -502,7 +556,7 @@
   <section id="ods">
     <h2><span class="icono" aria-hidden="true">☀️</span> ODS 7: El Reto en México</h2>
     <p>
-      México posee un potencial enorme para generar energía solar y eólica. Bajo los
+      México posee un potential enorme para generar energía solar y eólica. Bajo los
       lineamientos de la <strong>Agenda 2030</strong>, el país busca que el
       <strong>35 % de su energía</strong> provenga de fuentes limpias.
     </p>
@@ -611,6 +665,51 @@
     });
   </script>
 
+  <!-- ── SECCIÓN NUEVA: COMPARATIVA DE ENERGÍAS ── -->
+  <section id="comparativa">
+    <h2><span class="icono" aria-hidden="true">📊</span> Comparativa de Tecnologías Limpias</h2>
+    <p>Cada fuente tiene un rol estratégico e implicaciones particulares en el ecosistema energético de nuestro país:</p>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Fuente</th>
+            <th>Potencial en México</th>
+            <th>Ventaja Clave</th>
+            <th>Principal Reto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Solar (Fotovoltaica)</strong></td>
+            <td>Máximo (85% del territorio es óptimo)</td>
+            <td>Ideal para autoconsumo urbano</td>
+            <td>Intermitencia en días nublados</td>
+          </tr>
+          <tr>
+            <td><strong>Eólica</strong></td>
+            <td>Alto (Istmo de Tehuantepec, Norte)</td>
+            <td>Alta producción a gran escala</td>
+            <td>Impacto visual y en rutas de aves</td>
+          </tr>
+          <tr>
+            <td><strong>Hidroeléctrica</strong></td>
+            <td>Estable (Suroeste del país)</td>
+            <td>Generación continua y bajo demanda</td>
+            <td>Dependencia estacional de lluvias</td>
+          </tr>
+          <tr>
+            <td><strong>Geotérmica</strong></td>
+            <td>Moderado-Alto (Zonas volcánicas)</td>
+            <td>No depende del clima (24/7)</td>
+            <td>Alta inversión inicial de exploración</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- ── SECCIÓN NUEVA: DATOS CURIOSOS ── -->
   <section id="datos-curiosos">
     <h2><span class="icono" aria-hidden="true">💡</span> Datos Curiosos del Futuro Verde</h2>
@@ -670,6 +769,27 @@
         </div>
         <p>El primer uso práctico importante de los paneles solares ocurrió en el espacio profundo. La NASA los implementó con éxito para alimentar el satélite <em>Vanguard 1</em> en 1958.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ── SECCIÓN NUEVA: MITOS VS REALIDADES ── -->
+  <section id="mitos">
+    <h2><span class="icono" aria-hidden="true">🧠</span> Mitos vs. Realidades</h2>
+    <p>Desmintiendo de forma breve algunas de las ideas erróneas más comunes sobre la transición verde:</p>
+    
+    <div class="split-box">
+      <div class="mito">❌ Mito: "Las energías renovables son demasiado caras."</div>
+      <div class="realidad">✅ Realidad: Hoy en día, generar electricidad con sol o viento es sustancialmente más barato que construir nuevas plantas de carbón o gas.</div>
+    </div>
+
+    <div class="split-box">
+      <div class="mito">❌ Mito: "Si no hay viento o es de noche, nos quedamos sin luz."</div>
+      <div class="realidad">✅ Realidad: Las redes modernas combinan múltiples fuentes (como hidroeléctrica o geotérmica) y usan macrobaterías para respaldar el suministro.</div>
+    </div>
+
+    <div class="split-box">
+      <div class="mito">❌ Mito: "Fabricar paneles e instalaciones contamina más de lo que ahorran."</div>
+      <div class="realidad">✅ Realidad: Un panel solar recupera la energía utilizada en su fabricación e instalación durante sus primeros 1 a 2 años de vida; luego produce energía 100% limpia por casi tres décadas.</div>
     </div>
   </section>
 
@@ -742,108 +862,55 @@
       <div class="preview-cell"><img src="https://humanidades.com/wp-content/uploads/2023/05/energia-geotermica.jpg" alt="" loading="lazy" /></div>
     </div>
 
-    <a
-      href="galeria.html"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn-galeria"
-      aria-label="Abrir galería de imágenes en nueva pestaña"
-    >
-      <span class="btn-icono" aria-hidden="true">⚡</span>
-      Ver Galería Completa
-    </a>
+    <a href="galeria.html" target="_blank" rel="noopener noreferrer" class="btn-galeria">Ver galería completa</a>
   </section>
 
-  <span class="galeria-hint" aria-hidden="true">☀️ · solar · eólica · hidráulica · geotérmica · ☀️</span>
+  <!-- ── SECCIÓN NUEVA: VIDEO NARRATIVO ── -->
+  <section id="video-narrativo">
+    <h2><span class="icono" aria-hidden="true">🎬</span> Video Narrativo</h2>
+    <p>
+      Acompáñanos en este recorrido audiovisual donde explicamos detalladamente el impacto, 
+      los retos y las increíbles oportunidades de la transición hacia un desarrollo sustentable en México.
+    </p>
+    <div style="width: 100%; max-width: 760px; margin: 1.5rem auto 0; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px rgba(13,110,74,.13);">
+      <video controls style="width: 100%; display: block; background-color: #000;">
+        <source src="video/tu-video.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos. Por favor, actualízalo o intenta con otro.
+      </video>
+    </div>
+  </section>
 
-  <!-- ── SECCIÓN PREGUNTAS FRECUENTES (FAQ) ── -->
+  <!-- ── FAQ ── -->
   <section id="faq">
-    <h2><span class="icono" aria-hidden="true">❓</span> Preguntas Frecuentes sobre nuestra ODS 7</h2>
-    <p>Despeja tus dudas sobre la energía asequible y no contaminante en México.</p>
-
+    <h2><span class="icono" aria-hidden="true">❓</span> Preguntas Frecuentes</h2>
+    <p>Resolvemos tus dudas principales sobre el panorama de las energías verdes en nuestro entorno:</p>
+    
     <div class="faq-container">
       <details>
-        <summary>¿Qué es exactamente la ODS 7?</summary>
-        <div class="faq-answer">Es el Objetivo de Desarrollo Sostenible que busca garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos los habitantes del planeta antes del 2030.</div>
+        <summary>¿Qué es el ODS 7 y por qué importa?</summary>
+        <div class="faq-answer">
+          Es el Objetivo de Desarrollo Sostenible de la ONU que busca garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos, reduciendo drásticamente las emisiones globales.
+        </div>
       </details>
-
       <details>
-        <summary>¿Por qué es importante para México?</summary>
-        <div class="faq-answer">México tiene una ubicación privilegiada para la energía solar y eólica. Lograr la soberanía energética mediante renovables reduciría los costos de luz y la contaminación en nuestras ciudades.</div>
+        <summary>¿Cuál es la meta de México para el año 2030?</summary>
+        <div class="faq-answer">
+          Lograr que al menos el 35% de la generación eléctrica provenga de fuentes totalmente limpias y renovables, disminuyendo la dependencia histórica hacia el petróleo y el gas.
+        </div>
       </details>
-
       <details>
-        <summary>¿Cuál es la meta de México para el 2030?</summary>
-        <div class="faq-answer">El compromiso bajo el Acuerdo de París es alcanzar un 35% de generación eléctrica a través de fuentes limpias y reducir significativamente las emisiones de gases de efecto invernadero.</div>
-      </details>
-
-      <details>
-        <summary>¿Qué se considera "energía limpia"?</summary>
-        <div class="faq-answer">Son fuentes que no agotan los recursos naturales ni emiten gases contaminantes, como la solar (sol), eólica (viento), hidráulica (agua), geotérmica (calor de la tierra) y biomasa.</div>
-      </details>
-
-      <details>
-        <summary>¿Cómo ayuda la ODS 7 a las comunidades aisladas?</summary>
-        <div class="faq-answer">Permite instalar sistemas independientes (como paneles solares en techos) en zonas donde no llegan las redes eléctricas tradicionales, mejorando la salud y educación de estas familias.</div>
-      </details>
-
-      <details>
-        <summary>¿Es más cara la energía renovable?</summary>
-        <div class="faq-answer">Actualmente, la tecnología solar y eólica es la más barata de la historia. Aunque la instalación inicial requiere inversión, el costo de "combustible" es cero, lo que ahorra dinero a largo plazo.</div>
-      </details>
-
-      <details>
-        <summary>¿Qué puedo hacer yo para apoyar este objetivo?</summary>
-        <div class="faq-answer">Puedes empezar por reducir tu consumo eléctrico, informarte sobre paneles solares para el hogar y, sobre todo, compartir información (como esta página) para crear conciencia colectiva.</div>
+        <summary>¿Cómo puedo contribuir desde mi hogar?</summary>
+        <div class="faq-answer">
+          Adoptando hábitos de eficiencia energética, cambiando focos a tecnología LED, reduciendo el consumo de aparatos 'vampiro' y, si es viable, instalando paneles solares de autoconsumo.
+        </div>
       </details>
     </div>
   </section>
 
   <footer>
-    <p>🌿 Proyecto enfocado en el desarrollo sostenible de <strong>México</strong> · Agenda 2030 · ODS 7</p>
-    <div class="bandera-mx" role="img" aria-label="Bandera de México"></div>
+    <p>© 2026 Futuro Estable, Futuro Renovable. Construyendo un México sustentable.</p>
+    <div class="bandera-mx" aria-label="Bandera de México"></div>
   </footer>
-
-  <script>
-    const mensajes = [
-      { icono: "🌱", texto: "Bienvenidos a un futuro más limpio y renovable" },
-      { icono: "☀️",  texto: "El sol brilla gratis — aprovechemos su energía" },
-      { icono: "💨",  texto: "El viento no contamina: genera electricidad limpia para todos" },
-      { icono: "🌿",  texto: "Cada panel solar instalado es un paso menos de CO₂ en el aire" },
-      { icono: "⚡",  texto: "Energía renovable: poder sin precio para el planeta" },
-      { icono: "🌎",  texto: "Juntos podemos alcanzar el ODS 7 — Energía asequible y no contaminante" }
-    ];
-
-    const ticker   = document.getElementById("ticker");
-    let posicion  = 0;
-    let pausado   = false;
-    const velocidad = 1;
-
-    function construirTicker() {
-      ticker.innerHTML = ""; // Limpieza por seguridad
-      [...mensajes, ...mensajes].forEach(({ icono, texto }) => {
-        const item = document.createElement("span");
-        item.className = "ticker-item";
-        item.innerHTML = `<span>${icono}</span>${texto}`;
-        ticker.appendChild(item);
-      });
-    }
-
-    function animar() {
-      if (!pausado) {
-        posicion -= velocidad;
-        if (Math.abs(posicion) >= ticker.scrollWidth / 2) posicion = 0;
-        ticker.style.transform = `translateX(${posicion}px)`;
-      }
-      requestAnimationFrame(animar);
-    }
-
-    ticker.addEventListener("mouseenter", () => { pausado = true;  });
-    ticker.addEventListener("mouseleave", () => { pausado = false; });
-
-    construirTicker();
-    requestAnimationFrame(animar);
-  </script>
 
 </body>
 </html>
