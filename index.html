@@ -193,7 +193,7 @@
     }
     p:last-of-type { margin-bottom: 0; }
 
-    /* ── IMÁGENES ── */
+    /* ── IMÁGENES Y VIDEO CONTAINER ── */
     .img-seccion {
       display: block;
       width: 100%;
@@ -207,6 +207,25 @@
     .img-seccion:hover {
       transform: scale(1.015);
       box-shadow: 0 12px 30px rgba(13,110,74,.2);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+      height: 0;
+      margin-top: 1.6rem;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(13,110,74,.15);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     /* ── TARJETAS ODS Y DATOS CURIOSOS ── */
@@ -330,12 +349,11 @@
       font-weight: 600;
     }
 
-    /* ── BOTÓN INSTAGRAM ── */
-    .btn-instagram {
+    /* ── BOTONES / ENLACES EXTERNOS ── */
+    .btn-action {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
       color: var(--blanco);
       padding: 0.75rem 1.8rem;
       text-decoration: none;
@@ -345,10 +363,23 @@
       margin-top: 1.4rem;
       transition: transform 0.25s, box-shadow 0.25s;
     }
-    .btn-instagram:hover, .btn-instagram:focus {
+    .btn-action:hover, .btn-action:focus {
       transform: scale(1.06);
-      box-shadow: 0 6px 20px rgba(220,39,67,.4);
       outline: none;
+    }
+
+    .btn-instagram {
+      background: linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    }
+    .btn-instagram:hover, .btn-instagram:focus {
+      box-shadow: 0 6px 20px rgba(220,39,67,.4);
+    }
+
+    .btn-youtube {
+      background: #ff0000;
+    }
+    .btn-youtube:hover, .btn-youtube:focus {
+      box-shadow: 0 6px 20px rgba(255,0,0,.4);
     }
 
     /* ── FOOTER ── */
@@ -556,7 +587,7 @@
   <section id="ods">
     <h2><span class="icono" aria-hidden="true">☀️</span> ODS 7: El Reto en México</h2>
     <p>
-      México posee un potential enorme para generar energía solar y eólica. Bajo los
+      México posee un potencial enorme para generar energía solar y eólica. Bajo los
       lineamientos de la <strong>Agenda 2030</strong>, el país busca que el
       <strong>35 % de su energía</strong> provenga de fuentes limpias.
     </p>
@@ -665,7 +696,7 @@
     });
   </script>
 
-  <!-- ── SECCIÓN NUEVA: COMPARATIVA DE ENERGÍAS ── -->
+  <!-- ── SECCIÓN COMPARATIVA DE ENERGÍAS ── -->
   <section id="comparativa">
     <h2><span class="icono" aria-hidden="true">📊</span> Comparativa de Tecnologías Limpias</h2>
     <p>Cada fuente tiene un rol estratégico e implicaciones particulares en el ecosistema energético de nuestro país:</p>
@@ -683,7 +714,7 @@
         <tbody>
           <tr>
             <td><strong>Solar (Fotovoltaica)</strong></td>
-            <td>Máximo (85% del territorio es óptimo)</td>
+            <td>Parcial (85% del territorio es óptimo)</td>
             <td>Ideal para autoconsumo urbano</td>
             <td>Intermitencia en días nublados</td>
           </tr>
@@ -710,7 +741,7 @@
     </div>
   </section>
 
-  <!-- ── SECCIÓN NUEVA: DATOS CURIOSOS ── -->
+  <!-- ── SECCIÓN DATOS CURIOSOS ── -->
   <section id="datos-curiosos">
     <h2><span class="icono" aria-hidden="true">💡</span> Datos Curiosos del Futuro Verde</h2>
     <p>El potencial de las energías limpias es gigantesco. Te compartimos algunos hitos y realidades asombrosas a nivel global:</p>
@@ -772,7 +803,7 @@
     </div>
   </section>
 
-  <!-- ── SECCIÓN NUEVA: MITOS VS REALIDADES ── -->
+  <!-- ── SECCIÓN MITOS VS REALIDADES ── -->
   <section id="mitos">
     <h2><span class="icono" aria-hidden="true">🧠</span> Mitos vs. Realidades</h2>
     <p>Desmintiendo de forma breve algunas de las ideas erróneas más comunes sobre la transición verde:</p>
@@ -825,7 +856,7 @@
       href="https://www.instagram.com/futuro_renovable.f.e?igsh=MXNwY3c0NmNvOXdteg=="
       target="_blank"
       rel="noopener noreferrer"
-      class="btn-instagram"
+      class="btn-action btn-instagram"
       aria-label="Visita nuestro perfil de Instagram"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -865,52 +896,92 @@
     <a href="galeria.html" target="_blank" rel="noopener noreferrer" class="btn-galeria">Ver galería completa</a>
   </section>
 
-  <!-- ── SECCIÓN NUEVA: VIDEO NARRATIVO ── -->
+  <!-- ── SECCIÓN VIDEO NARRATIVO ── -->
   <section id="video-narrativo">
     <h2><span class="icono" aria-hidden="true">🎬</span> Video Narrativo</h2>
     <p>
-      Acompáñanos en este recorrido audiovisual donde explicamos detalladamente el impacto, 
-      los retos y las increíbles oportunidades de la transición hacia un desarrollo sustentable en México.
+      ¡Te invitamos a ver nuestra producción audiovisual! En este video explicamos detalladamente los pilares del desarrollo sostenible, la importancia del ODS 7 y cómo impacta directamente en el entorno social y ambiental de México.
     </p>
-    <div style="width: 100%; max-width: 760px; margin: 1.5rem auto 0; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px rgba(13,110,74,.13);">
-      <video controls style="width: 100%; display: block; background-color: #000;">
-        <source src="https://youtu.be/-p__2jEeEHM" type="video/mp4">
-        Tu navegador no soporta la reproducción de videos. Por favor, actualízalo o intenta con otro.
-      </video>
+    
+    <!-- Contenedor responsivo del Video incrustado de YouTube -->
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/-p__2jEeEHM" 
+        title="Video Narrativo - Futuro Estable, Futuro Renovable" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
     </div>
+
+    <!-- Botón directo por si prefieren ir a la plataforma -->
+    <a
+      href="https://youtu.be/-p__2jEeEHM"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-action btn-youtube"
+      aria-label="Ver video directo en YouTube"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+      Ver en YouTube
+    </a>
   </section>
 
-  <!-- ── FAQ ── -->
+  <!-- ── SECCIÓN FAQ ── -->
   <section id="faq">
     <h2><span class="icono" aria-hidden="true">❓</span> Preguntas Frecuentes</h2>
-    <p>Resolvemos tus dudas principales sobre el panorama de las energías verdes en nuestro entorno:</p>
-    
+    <p>Respuestas rápidas a las dudas más comunes sobre la energía limpia:</p>
     <div class="faq-container">
       <details>
-        <summary>¿Qué es el ODS 7 y por qué importa?</summary>
-        <div class="faq-answer">
-          Es el Objetivo de Desarrollo Sostenible de la ONU que busca garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos, reduciendo drásticamente las emisiones globales.
-        </div>
+        <summary>¿Qué es exactamente el ODS 7?</summary>
+        <div class="faq-answer">Es el Objetivo de Desarrollo Sostenible de la ONU que busca garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos de aquí al 2030.</div>
       </details>
       <details>
-        <summary>¿Cuál es la meta de México para el año 2030?</summary>
-        <div class="faq-answer">
-          Lograr que al menos el 35% de la generación eléctrica provenga de fuentes totalmente limpias y renovables, disminuyendo la dependencia histórica hacia el petróleo y el gas.
-        </div>
+        <summary>¿Cómo afecta el cambio climático a México?</summary>
+        <div class="faq-answer">Provoca sequías severas que afectan las hidroeléctricas, aumentos de temperatura e inundaciones. La transición reduce los gases de efecto invernadero que lo aceleran.</div>
       </details>
       <details>
-        <summary>¿Cómo puedo contribuir desde mi hogar?</summary>
-        <div class="faq-answer">
-          Adoptando hábitos de eficiencia energética, cambiando focos a tecnología LED, reduciendo el consumo de aparatos 'vampiro' y, si es viable, instalando paneles solares de autoconsumo.
-        </div>
+        <summary>¿Puedo usar energía solar en mi casa?</summary>
+        <div class="faq-answer">Sí, en México el contrato de interconexión con CFE te permite instalar paneles solares domésticos y reducir tu tarifa eléctrica casi por completo.</div>
       </details>
     </div>
   </section>
 
+  <!-- ── FOOTER ── -->
   <footer>
-    <p>© 2026 Futuro Estable, Futuro Renovable. Construyendo un México sustentable.</p>
-    <div class="bandera-mx" aria-label="Bandera de México"></div>
+    <p>© 2026 Futuro Estable, Futuro Renovable. Construyendo un mañana limpio.</p>
+    <div class="bandera-mx" aria-label="Hecho en México"></div>
   </footer>
+
+  <script>
+    // Configuración dinámica simple para el ticker de noticias
+    const datosTicker = [
+      "⚡ ODS 7: Garantizar energía asequible y no contaminante.",
+      "☀️ México tiene uno de los mayores potenciales de irradiación solar del mundo.",
+      "💨 El Istmo de Tehuantepec es un referente global en potencia eólica.",
+      "🌍 Reducir las emisiones de carbono es una responsabilidad colectiva.",
+      "🌿 ¡Visita nuestro Instagram y comparte el cambio verde!"
+    ];
+    
+    const track = document.getElementById('ticker');
+    // Duplicar elementos para que el bucle visual sea infinito e ininterrumpido
+    const contenido = datosTicker.map(t => `<div class="ticker-item"><span>•</span>${t}</div>`).join('');
+    track.innerHTML = contenido + contenido + contenido;
+
+    // Animación fluida vía JS para evitar saltos en pantallas anchas
+    let x = 0;
+    function animarTicker() {
+      x -= 0.8; // Velocidad de desplazamiento
+      if (Math.abs(x) >= track.scrollWidth / 3) {
+        x = 0;
+      }
+      track.style.transform = `translateX(${x}px)`;
+      requestAnimationFrame(animarTicker);
+    }
+    // Iniciar ticker cuando todo cargue
+    window.addEventListener('DOMContentLoaded', animarTicker);
+  </script>
 
 </body>
 </html>
